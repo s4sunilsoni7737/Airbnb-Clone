@@ -1,0 +1,333 @@
+
+<% layout("/layouts/boilerplate") %>
+<style>
+  .filters-wrapper {
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+
+  .filters-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 10px;
+    padding-left: 0;
+  }
+
+  #filters {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 20px;
+    margin-top: 1rem;
+    height: 80px;
+    padding-bottom: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border: 1px solid gray;
+    border-radius: 40px;
+    box-shadow: 0px 0px 10px  0.5px rgba(128, 128, 128, 0.403); 
+    width: 65%;
+    transition: 0.35s;
+   }
+   #filters:hover{
+    box-shadow: 0px 0px 10px  2px rgba(128, 128, 128, 0.722); 
+   }
+
+  .filter {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-left: 2rem;
+    padding-top: 2rem;
+    
+    opacity: 0.7;
+    height: 100%; 
+    transition: 0.2s;
+  }
+
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .filter p {
+    font-size: 0.8rem;
+  }
+
+  .tax-toggle, .dropdown .btn {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 3.25rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+    background-color: white;
+    color: black;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dropdown {
+    flex-shrink: 1;
+    width: 48%;
+  }
+
+  .tax-toggle {
+    margin-top: 1rem;
+    flex-shrink: 1;
+    width: 48%;
+  }
+.tax-info{
+  display: none;
+}
+  .dropdown-menu {
+    border-radius: 1rem;
+  }
+  .fa-angles-left{
+    margin-top: 1rem;
+    opacity: 0.5;
+    transition: 0.5s;
+    
+  }
+  .fa-angles-right{
+    margin-top: 1rem;
+    padding-right: 1rem;
+    opacity: 0.5;
+    transition: 0.5s;
+
+
+  }
+  .fa-angles-right:hover{
+    opacity: 0.8;
+    cursor: pointer;
+
+  }
+  .fa-angles-left:hover{
+    opacity: 0.8;
+    cursor: pointer;
+
+  }
+
+  /* Mobile view */
+  @media (max-width: 768px) {
+    .fa-angles-right ,.fa-angles-left{
+      display: none;
+    }
+    .filters-container {
+      margin-top: 1rem;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #filters {
+      display: none;
+    }
+    
+    
+    .dropdown {
+      display: block;
+      
+    }
+    
+    .tax-toggle {
+      margin-left: 0;
+      margin-top: 0;
+      
+    }
+    #filterDropdown{
+      height: 2.5rem;
+      /* margin-right: 2rem; */
+      width: 48%;
+      font-size: 0.70rem;
+    }
+    .tax-toggle {
+    width: 50%;
+    text-align: center;
+    /* margin-top: 10px; */
+    height: 2.5rem;  /* Smaller height */
+    font-size: 0.70rem; /* Smaller text size */
+    padding: 0.75rem;  /* Adjust padding */
+
+  }
+  
+   
+    
+  }
+
+  /* Desktop view */
+  @media (min-width: 769px) {
+    .filters-container {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    #filters {
+      display: flex;
+    }
+
+    .dropdown {
+      display: none;
+    }
+
+    .tax-toggle {
+      width: auto;
+      margin-left: auto;
+    }
+  }
+</style>
+
+
+<body>
+  
+  <div class="filters-container">
+    <i class="fa-solid fa-angles-left fa-lg"></i>
+    <!-- Filters icons - visible only on Desktop -->
+    <div id="filters">
+      
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div><p>Trending</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div><p>Rooms</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-city"></i></div><p>Iconic cities</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain"></i></div><p>Mountains</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div><p>Castles</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div><p>Amazing Pools</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-cow"></i></div><p>Farms</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-tents"></i></div><p>Camping</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div><p>Beachfront</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-tornado"></i></div><p>Desert</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-sailboat"></i></div><p>Island</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-brands fa-space-awesome"></i></div><p>OMG!</p>
+       
+      </div>
+      
+    </div>
+    <i class="fa-solid fa-angles-right fa-lg"></i>
+  
+    <!-- Dropdown for Mobile -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        Filters
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+        <li><a class="dropdown-item" href="#">Trending</a></li>
+        <li><a class="dropdown-item" href="#">Rooms</a></li>
+        <li><a class="dropdown-item" href="#">Iconic cities</a></li>
+        <li><a class="dropdown-item" href="#">Mountains</a></li>
+        <li><a class="dropdown-item" href="#">Castles</a></li>
+        <li><a class="dropdown-item" href="#">Amazing Pools</a></li>
+        <li><a class="dropdown-item" href="#">Farms</a></li>
+        <li><a class="dropdown-item" href="#">Camping</a></li>
+        <li><a class="dropdown-item" href="#">Beachfront</a></li>
+        <li><a class="dropdown-item" href="#">Desert</a></li>
+        <li><a class="dropdown-item" href="#">Island</a></li>
+        <li><a class="dropdown-item" href="#">OMG!</a></li>
+      </ul>
+    </div>
+  
+    <!-- Tax Toggle Switch -->
+    <div class="tax-toggle">
+      <div class="form-check-reverse form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+        <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+      </div>
+    </div>
+  
+  </div>
+  
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-es-1 mt-3">
+<% for(let listing of allListing){ %>
+  <a href="/listings/<%= listing.id %>" class="listing-link">
+    <div class="card col listing-card" >
+  <img src="<%= listing.image.url  %>" class="card-img-top" alt="LISTING-IMAGE" style="height: 20rem;"/> 
+<div class="card-img-overlay"><i class="fa-solid fa-compass"></i></div>
+  <div class="card-body">
+    <p class="card-text">
+     <b> <%= listing.title%> </b><br>
+      &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+      <i class="tax-info">  &nbsp;+18% GST</i>
+    </p>
+  </div>
+</div>
+  </a>
+
+<% } %>
+</div>
+
+<!-- <ul>
+    <% for(let listing of allListing){ %>
+      <li><a href="/listing/<%= listing.id %>"><%= listing.title%>
+    </a>
+  
+      <% } %> -->
+    </ul> 
+    
+    <!-- <div  id="go-top">
+      <button onclick="goup()" type="button">
+        <i class="fa-solid fa-angle-up"></i>
+      </button>
+    </div>
+    <script>
+      function goup(){
+        let scrollTop= document.getElementById("go-top");
+        
+        scrollTop.addEventListener("click",()=>{
+          window.scrollTo({top:0,behavior:"smooth"})
+        });
+      }
+    </script> -->
+</body>
+</html>
+<script>
+  let taxSwitch = document.getElementById("switchCheckDefault");
+  taxSwitch.addEventListener("click",()=>{
+  let taxInfo = document.getElementsByClassName("tax-info");
+  for(info of taxInfo){
+    if(info.style.display != "inline"){
+    info.style.display = "inline";
+    }else{
+      info.style.display = "none";
+    }
+  }
+  });
+
+  
+  document.querySelector('.fa-angles-left').addEventListener('click', () => {
+    document.getElementById('filters').scrollBy({ left: -200, behavior: 'smooth' });
+  });
+
+  document.querySelector('.fa-angles-right').addEventListener('click', () => {
+    document.getElementById('filters').scrollBy({ left: 200, behavior: 'smooth' });
+  });
+
+   
+
+</script>
